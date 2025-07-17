@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure your documents and optimize images with our advanced security tool. Protect sensitive files and compress images with customizable settings.">
+    <meta name="keywords" content="document security, image optimization, file protection, PDF security, image compressor">
+    <meta name="author" content="Security Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Secure Document & Image Optimization Tool">
+    <meta property="og:description" content="Protect your sensitive documents and optimize images for web with our advanced tool.">
+    <meta property="og:type" content="website">
+    
+    <title>SecureDocs Pro | Document Protection & Image Optimization Tool</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/secure-tool">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SecureDocs Pro",
+      "url": "https://yourwebsite.com/secure-tool",
+      "description": "Advanced tool for document security and image optimization",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web"
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .tool-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .tool-header p {
+            color: var(--text-light);
+        }
+        
+        .tool-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            color: var(--secondary-color);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--secondary-color);
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            margin-bottom: 10px;
+        }
+        
+        .upload-area small {
+            color: var(--text-light);
+        }
+        
+        .settings-panel {
+            margin-top: 30px;
+        }
+        
+        .settings-panel h3 {
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .range-container input[type="range"] {
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+        
+        .range-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-danger {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #219653;
+        }
+        
+        .result-container {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .file-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .file-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .file-details p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .progress-container {
+            margin-top: 20px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--secondary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .ad-container {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        
+        .ad-label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav {
+                margin-top: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tool-tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                text-align: left;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .tab-btn.active::after {
+                display: none;
+            }
+            
+            .range-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .range-container input[type="range"] {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .upload-area {
+                padding: 20px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SecureDocs Pro</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tool">Tool</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Secure Your Documents & Optimize Images</h1>
+            <p>Protect sensitive files with advanced encryption and optimize images for better performance with our comprehensive security tool.</p>
+            <a href="#tool" class="btn btn-success">Try It Now</a>
+        </div>
+    </section>
+
+    <div class="ad-container">
+        <span class="ad-label">Advertisement</span>
+        <!-- Replace with your Google AdSense ad unit code -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+        <!-- Your Ad Unit -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <section class="main-content" id="tool">
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-header">
+                    <h2>Security & Optimization Tool</h2>
+                    <p>Protect your documents and optimize images with our advanced tool</p>
+                </div>
+                
+                <div class="tool-tabs">
+                    <button class="tab-btn active" data-tab="document">Document Security</button>
+                    <button class="tab-btn" data-tab="image">Image Optimization</button>
+                </div>
+                
+                <div class="tab-content active" id="document-tab">
+                    <div class="upload-area" id="docUploadArea">
+                        <i class="fas fa-file-upload"></i>
+                        <p>Drag & Drop your documents here</p>
+                        <p>or</p>
+                        <button class="btn">Browse Files</button>
+                        <small>Supports PDF, DOCX, PPTX, XLSX (Max 50MB)</small>
+                        <input type="file" id="docFileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" style="display: none;">
+                    </div>
+                    
+                    <div class="settings-panel">
+                        <h3>Security Settings</h3>
+                        
+                        <div class="form-group">
+                            <label for="encryption-type">Encryption Type</label>
+                            <select id="encryption-type" class="form-control">
+                                <option value="aes256">AES-256 (Strongest)</option>
+                                <option value="aes192">AES-192</option>
+                                <option value="aes128">AES-128</option>
+                                <option value="des">DES (Legacy)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password (Optional)</label>
+                            <input type="password" id="password" class="form-control" placeholder="Enter password for additional security">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Additional Protection</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="watermark" checked>
+                                <label for="watermark">Add invisible watermark</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="restrict-edit">
+                                <label for="restrict-edit">Restrict editing</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="restrict-print">
+                                <label for="restrict-print">Restrict printing</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-block" id="secureDocBtn">Secure Document</button>
+                    </div>
+                    
+                    <div class="result-container" id="docResult">
+                        <div class="result-header">
+                            <div class="file-info">
+                                <i class="fas fa-file-pdf file-icon"></i>
+                                <div class="file-details">
+                                    <h4>document_secured.pdf</h4>
+                                    <p>2.4 MB • PDF Document</p>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-success">Download</button>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <p class="progress-text">Securing document... 75%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="image-tab">
+                    <div class="upload-area" id="imgUploadArea">
+                        <i class="fas fa-images"></i>
+                        <p>Drag & Drop your images here</p>
+                        <p>or</p>
+                        <button class="btn">Browse Files</button>
+                        <small>Supports JPG, PNG, GIF, WEBP (Max 20MB)</small>
+                        <input type="file" id="imgFileInput" accept="image/*" style="display: none;" multiple>
+                    </div>
+                    
+                    <div class="settings-panel">
+                        <h3>Optimization Settings</h3>
+                        
+                        <div class="form-group">
+                            <label for="compression-level">Compression Level</label>
+                            <div class="range-container">
+                                <input type="range" id="compression-level" min="0" max="100" value="70" class="form-control">
+                                <span class="range-value">70%</span>
+                            </div>
+                            <small>Higher values result in smaller files but lower quality</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="output-format">Output Format</label>
+                            <select id="output-format" class="form-control">
+                                <option value="original">Keep original format</option>
+                                <option value="jpg">JPEG</option>
+                                <option value="png">PNG</option>
+                                <option value="webp">WebP (Recommended)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Optimization Options</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="strip-metadata" checked>
+                                <label for="strip-metadata">Strip metadata</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="progressive" checked>
+                                <label for="progressive">Progressive loading (JPEG)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="preserve-exif">
+                                <label for="preserve-exif">Preserve EXIF data</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-block" id="optimizeImgBtn">Optimize Images</button>
+                    </div>
+                    
+                    <div class="result-container" id="imgResult">
+                        <div class="result-header">
+                            <div class="file-info">
+                                <i class="fas fa-image file-icon"></i>
+                                <div class="file-details">
+                                    <h4>optimized_images.zip</h4>
+                                    <p>3 files • 1.2 MB total</p>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-success">Download All</button>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%"></div>
+                            </div>
+                            <p class="progress-text">Optimizing images... 45%</p>
+                        </div>
+                        
+                        <div class="image-previews">
+                            <!-- Image previews would be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense ad unit code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section id="features">
+                <h2 class="section-title">Key Features</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Military-Grade Encryption</h3>
+                        <p>Protect your documents with AES-256 encryption, the same standard used by governments and security experts worldwide.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-compress-alt"></i>
+                        </div>
+                        <h3>Smart Image Compression</h3>
+                        <p>Reduce image file sizes by up to 80% without noticeable quality loss with our advanced compression algorithms.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Document Protection</h3>
+                        <p>Add watermarks, restrict editing, printing, and copying to maintain control over your sensitive documents.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Fast Processing</h3>
+                        <p>Our optimized algorithms process files quickly, even for large documents and high-resolution images.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Cloud Integration</h3>
+                        <p>Directly import files from Google Drive, Dropbox, or OneDrive and save processed files back to your cloud storage.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Fully responsive design works perfectly on all devices from desktop to smartphone.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <div class="ad-container">
+        <span class="ad-label">Advertisement</span>
+        <!-- Replace with your Google AdSense ad unit code -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+        <!-- Your Ad Unit -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SecureDocs Pro</h3>
+                    <p>Advanced tools for document security and image optimization. Protect your sensitive files and optimize your media for better performance.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#tool">Tool</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i></li>
+                        <li><i class="fas fa-phone"></i> </li>
+                        <li><i class="fas fa-map-marker-alt"></i> </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SecureDocs Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Tab switching functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                this.classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // File upload functionality for documents
+        const docUploadArea = document.getElementById('docUploadArea');
+        const docFileInput = document.getElementById('docFileInput');
+        
+        docUploadArea.addEventListener('click', function() {
+            docFileInput.click();
+        });
+        
+        docFileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const fileName = this.files[0].name;
+                docUploadArea.innerHTML = `
+                    <i class="fas fa-file-alt"></i>
+                    <p>${fileName}</p>
+                    <button class="btn btn-danger">Change File</button>
+                `;
+            }
+        });
+        
+        // File upload functionality for images
+        const imgUploadArea = document.getElementById('imgUploadArea');
+        const imgFileInput = document.getElementById('imgFileInput');
+        
+        imgUploadArea.addEventListener('click', function() {
+            imgFileInput.click();
+        });
+        
+        imgFileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const fileCount = this.files.length;
+                const fileNames = fileCount === 1 ? this.files[0].name : `${fileCount} files selected`;
+                
+                imgUploadArea.innerHTML = `
+                    <i class="fas fa-images"></i>
+                    <p>${fileNames}</p>
+                    <button class="btn btn-danger">Change Files</button>
+                `;
+            }
+        });
+        
+        // Compression level display
+        const compressionLevel = document.getElementById('compression-level');
+        const rangeValue = document.querySelector('.range-value');
+        
+        compressionLevel.addEventListener('input', function() {
+            rangeValue.textContent = `${this.value}%`;
+        });
+        
+        // Simulate document securing process
+        document.getElementById('secureDocBtn').addEventListener('click', function() {
+            const resultContainer = document.getElementById('docResult');
+            const progressBar = resultContainer.querySelector('.progress');
+            const progressText = resultContainer.querySelector('.progress-text');
+            
+            resultContainer.style.display = 'block';
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `Securing document... ${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    progressText.textContent = 'Document secured! Ready to download.';
+                }
+            }, 200);
+        });
+        
+        // Simulate image optimization process
+        document.getElementById('optimizeImgBtn').addEventListener('click', function() {
+            const resultContainer = document.getElementById('imgResult');
+            const progressBar = resultContainer.querySelector('.progress');
+            const progressText = resultContainer.querySelector('.progress-text');
+            
+            resultContainer.style.display = 'block';
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 3;
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `Optimizing images... ${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    progressText.textContent = 'Images optimized! Ready to download.';
+                    
+                    // Simulate adding image previews
+                    const imagePreviews = resultContainer.querySelector('.image-previews');
+                    imagePreviews.innerHTML = `
+                        <h4>Optimized Images Preview</h4>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                            <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
+                            </div>
+                            <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
+                            </div>
+                            <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 200);
+        });
+        
+        // Drag and drop functionality
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            docUploadArea.addEventListener(eventName, preventDefaults, false);
+            imgUploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            docUploadArea.addEventListener(eventName, highlight, false);
+            imgUploadArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            docUploadArea.addEventListener(eventName, unhighlight, false);
+            imgUploadArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight(e) {
+            this.classList.add('highlight');
+        }
+        
+        function unhighlight(e) {
+            this.classList.remove('highlight');
+        }
+        
+        docUploadArea.addEventListener('drop', handleDrop, false);
+        imgUploadArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (this.id === 'docUploadArea') {
+                docFileInput.files = files;
+                const event = new Event('change');
+                docFileInput.dispatchEvent(event);
+            } else {
+                imgFileInput.files = files;
+                const event = new Event('change');
+                imgFileInput.dispatchEvent(event);
+            }
+        }
+    </script>
+</body>
+</html>
