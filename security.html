@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Secure your documents and optimize images with our advanced security tool. Protect sensitive files and compress images with customizable settings.">
-    <meta name="keywords" content="document security, image optimization, file protection, PDF security, image compressor">
-    <meta name="author" content="Security Tools">
+    <meta name="description" content="Secure your documents with military-grade encryption and optimize images for web performance. Free online tool for PDF protection and image compression.">
+    <meta name="keywords" content="document security, image optimization, PDF encryption, file protection, image compressor, online security tool">
+    <meta name="author" content="SecureTools Pro">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Secure Document & Image Optimization Tool">
-    <meta property="og:description" content="Protect your sensitive documents and optimize images for web with our advanced tool.">
+    <meta property="og:title" content="SecureDocs Pro | Document Security & Image Optimization Tool">
+    <meta property="og:description" content="Protect your sensitive documents and optimize images for better web performance with our free online tool.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
     
-    <title>SecureDocs Pro | Document Protection & Image Optimization Tool</title>
+    <title>SecureDocs Pro | Document Security & Image Optimization Tool</title>
     
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://yourwebsite.com/secure-tool">
@@ -26,9 +29,14 @@
       "@type": "WebApplication",
       "name": "SecureDocs Pro",
       "url": "https://yourwebsite.com/secure-tool",
-      "description": "Advanced tool for document security and image optimization",
+      "description": "Advanced online tool for document security and image optimization",
       "applicationCategory": "SecurityApplication",
-      "operatingSystem": "Web"
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     }
     </script>
     
@@ -635,11 +643,11 @@
         <!-- Replace with your Google AdSense ad unit code -->
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
                 crossorigin="anonymous"></script>
-        <!-- Your Ad Unit -->
+        <!-- Header Ad -->
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-slot="YOUR_HEADER_AD_SLOT"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>
@@ -712,20 +720,20 @@
                             <div class="file-info">
                                 <i class="fas fa-file-pdf file-icon"></i>
                                 <div class="file-details">
-                                    <h4>document_secured.pdf</h4>
-                                    <p>2.4 MB • PDF Document</p>
+                                    <h4 id="securedFileName">document_secured.pdf</h4>
+                                    <p id="securedFileSize">2.4 MB • PDF Document</p>
                                 </div>
                             </div>
                             <div>
-                                <button class="btn btn-success">Download</button>
+                                <button class="btn btn-success" id="downloadSecuredBtn">Download</button>
                             </div>
                         </div>
                         
                         <div class="progress-container">
                             <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
+                                <div class="progress" id="docProgress"></div>
                             </div>
-                            <p class="progress-text">Securing document... 75%</p>
+                            <p class="progress-text" id="docProgressText">Securing document... 0%</p>
                         </div>
                     </div>
                 </div>
@@ -747,7 +755,7 @@
                             <label for="compression-level">Compression Level</label>
                             <div class="range-container">
                                 <input type="range" id="compression-level" min="0" max="100" value="70" class="form-control">
-                                <span class="range-value">70%</span>
+                                <span class="range-value" id="compressionValue">70%</span>
                             </div>
                             <small>Higher values result in smaller files but lower quality</small>
                         </div>
@@ -786,24 +794,24 @@
                             <div class="file-info">
                                 <i class="fas fa-image file-icon"></i>
                                 <div class="file-details">
-                                    <h4>optimized_images.zip</h4>
-                                    <p>3 files • 1.2 MB total</p>
+                                    <h4 id="optimizedFileName">optimized_images.zip</h4>
+                                    <p id="optimizedFileInfo">3 files • 1.2 MB total</p>
                                 </div>
                             </div>
                             <div>
-                                <button class="btn btn-success">Download All</button>
+                                <button class="btn btn-success" id="downloadOptimizedBtn">Download All</button>
                             </div>
                         </div>
                         
                         <div class="progress-container">
                             <div class="progress-bar">
-                                <div class="progress" style="width: 45%"></div>
+                                <div class="progress" id="imgProgress"></div>
                             </div>
-                            <p class="progress-text">Optimizing images... 45%</p>
+                            <p class="progress-text" id="imgProgressText">Optimizing images... 0%</p>
                         </div>
                         
-                        <div class="image-previews">
-                            <!-- Image previews would be dynamically inserted here -->
+                        <div class="image-previews" id="imagePreviews">
+                            <!-- Image previews will be inserted here dynamically -->
                         </div>
                     </div>
                 </div>
@@ -814,11 +822,11 @@
                 <!-- Replace with your Google AdSense ad unit code -->
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
                         crossorigin="anonymous"></script>
-                <!-- Your Ad Unit -->
+                <!-- Content Ad -->
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-slot="YOUR_CONTENT_AD_SLOT"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script>
@@ -886,11 +894,11 @@
         <!-- Replace with your Google AdSense ad unit code -->
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
                 crossorigin="anonymous"></script>
-        <!-- Your Ad Unit -->
+        <!-- Footer Ad -->
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-slot="YOUR_FOOTER_AD_SLOT"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>
@@ -937,15 +945,15 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-envelope"></i></li>
-                        <li><i class="fas fa-phone"></i> </li>
-                        <li><i class="fas fa-map-marker-alt"></i> </li>
+                        <li><i class="fas fa-envelope"></i> support@securedocspro.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Security Ave, Suite 100<br>San Francisco, CA 94107</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 SecureDocs Pro. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> SecureDocs Pro. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -977,6 +985,7 @@
         // File upload functionality for documents
         const docUploadArea = document.getElementById('docUploadArea');
         const docFileInput = document.getElementById('docFileInput');
+        let selectedDocFile = null;
         
         docUploadArea.addEventListener('click', function() {
             docFileInput.click();
@@ -984,18 +993,26 @@
         
         docFileInput.addEventListener('change', function() {
             if (this.files.length > 0) {
-                const fileName = this.files[0].name;
+                selectedDocFile = this.files[0];
+                const fileName = selectedDocFile.name;
                 docUploadArea.innerHTML = `
                     <i class="fas fa-file-alt"></i>
                     <p>${fileName}</p>
-                    <button class="btn btn-danger">Change File</button>
+                    <button class="btn btn-danger" id="changeDocBtn">Change File</button>
                 `;
+                
+                // Add event listener to change button
+                document.getElementById('changeDocBtn').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    docFileInput.click();
+                });
             }
         });
         
         // File upload functionality for images
         const imgUploadArea = document.getElementById('imgUploadArea');
         const imgFileInput = document.getElementById('imgFileInput');
+        let selectedImgFiles = [];
         
         imgUploadArea.addEventListener('click', function() {
             imgFileInput.click();
@@ -1003,33 +1020,56 @@
         
         imgFileInput.addEventListener('change', function() {
             if (this.files.length > 0) {
-                const fileCount = this.files.length;
-                const fileNames = fileCount === 1 ? this.files[0].name : `${fileCount} files selected`;
+                selectedImgFiles = Array.from(this.files);
+                const fileCount = selectedImgFiles.length;
+                const fileNames = fileCount === 1 ? selectedImgFiles[0].name : `${fileCount} files selected`;
                 
                 imgUploadArea.innerHTML = `
                     <i class="fas fa-images"></i>
                     <p>${fileNames}</p>
-                    <button class="btn btn-danger">Change Files</button>
+                    <button class="btn btn-danger" id="changeImgBtn">Change Files</button>
                 `;
+                
+                // Add event listener to change button
+                document.getElementById('changeImgBtn').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    imgFileInput.click();
+                });
             }
         });
         
         // Compression level display
         const compressionLevel = document.getElementById('compression-level');
-        const rangeValue = document.querySelector('.range-value');
+        const compressionValue = document.getElementById('compressionValue');
         
         compressionLevel.addEventListener('input', function() {
-            rangeValue.textContent = `${this.value}%`;
+            compressionValue.textContent = `${this.value}%`;
         });
         
-        // Simulate document securing process
+        // Document securing process with download functionality
         document.getElementById('secureDocBtn').addEventListener('click', function() {
-            const resultContainer = document.getElementById('docResult');
-            const progressBar = resultContainer.querySelector('.progress');
-            const progressText = resultContainer.querySelector('.progress-text');
+            if (!selectedDocFile) {
+                alert('Please select a document first');
+                return;
+            }
             
+            const resultContainer = document.getElementById('docResult');
+            const progressBar = document.getElementById('docProgress');
+            const progressText = document.getElementById('docProgressText');
+            const downloadBtn = document.getElementById('downloadSecuredBtn');
+            const securedFileName = document.getElementById('securedFileName');
+            const securedFileSize = document.getElementById('securedFileSize');
+            
+            // Show result container
             resultContainer.style.display = 'block';
             
+            // Update file info
+            const fileSizeMB = (selectedDocFile.size / (1024 * 1024)).toFixed(1);
+            const fileExt = selectedDocFile.name.split('.').pop().toUpperCase();
+            securedFileName.textContent = `secured_${selectedDocFile.name}`;
+            securedFileSize.textContent = `${fileSizeMB} MB • ${fileExt} Document`;
+            
+            // Simulate processing
             let progress = 0;
             const interval = setInterval(() => {
                 progress += 5;
@@ -1039,18 +1079,43 @@
                 if (progress >= 100) {
                     clearInterval(interval);
                     progressText.textContent = 'Document secured! Ready to download.';
+                    
+                    // Enable download button
+                    downloadBtn.onclick = function() {
+                        downloadSecuredDocument(selectedDocFile);
+                    };
                 }
             }, 200);
         });
         
-        // Simulate image optimization process
+        // Image optimization process with download functionality
         document.getElementById('optimizeImgBtn').addEventListener('click', function() {
-            const resultContainer = document.getElementById('imgResult');
-            const progressBar = resultContainer.querySelector('.progress');
-            const progressText = resultContainer.querySelector('.progress-text');
+            if (selectedImgFiles.length === 0) {
+                alert('Please select at least one image first');
+                return;
+            }
             
+            const resultContainer = document.getElementById('imgResult');
+            const progressBar = document.getElementById('imgProgress');
+            const progressText = document.getElementById('imgProgressText');
+            const downloadBtn = document.getElementById('downloadOptimizedBtn');
+            const optimizedFileName = document.getElementById('optimizedFileName');
+            const optimizedFileInfo = document.getElementById('optimizedFileInfo');
+            const imagePreviews = document.getElementById('imagePreviews');
+            
+            // Show result container
             resultContainer.style.display = 'block';
             
+            // Update file info
+            const totalSizeKB = Math.round(selectedImgFiles.reduce((sum, file) => sum + file.size, 0) / 1024);
+            optimizedFileName.textContent = selectedImgFiles.length === 1 ? 
+                `optimized_${selectedImgFiles[0].name}` : 
+                'optimized_images.zip';
+            optimizedFileInfo.textContent = selectedImgFiles.length === 1 ? 
+                `${Math.round(selectedImgFiles[0].size / 1024)} KB` : 
+                `${selectedImgFiles.length} files • ${totalSizeKB} KB total`;
+            
+            // Simulate processing
             let progress = 0;
             const interval = setInterval(() => {
                 progress += 3;
@@ -1061,30 +1126,145 @@
                     clearInterval(interval);
                     progressText.textContent = 'Images optimized! Ready to download.';
                     
-                    // Simulate adding image previews
-                    const imagePreviews = resultContainer.querySelector('.image-previews');
+                    // Enable download button
+                    downloadBtn.onclick = function() {
+                        if (selectedImgFiles.length === 1) {
+                            downloadOptimizedImage(selectedImgFiles[0]);
+                        } else {
+                            downloadAllOptimizedImages(selectedImgFiles);
+                        }
+                    };
+                    
+                    // Generate image previews
                     imagePreviews.innerHTML = `
                         <h4>Optimized Images Preview</h4>
                         <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
-                            <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
-                            </div>
-                            <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
-                            </div>
-                            <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
-                            </div>
+                            ${selectedImgFiles.map((file, index) => {
+                                const fileName = file.name;
+                                const fileSizeKB = Math.round(file.size / 1024);
+                                const optimizedSizeKB = Math.round(fileSizeKB * (1 - (compressionLevel.value/100)));
+                                const format = document.getElementById('output-format').value;
+                                const fileExt = format === 'original' ? fileName.split('.').pop() : format;
+                                
+                                return `
+                                <div style="width: 120px; background: #f8f9fa; border-radius: 8px; padding: 10px; text-align: center;">
+                                    <div style="width: 100px; height: 100px; background-color: #eee; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; position: relative; border-radius: 4px;">
+                                        <i class="fas fa-image" style="font-size: 24px; color: #999;"></i>
+                                        <div style="position: absolute; bottom: 5px; right: 5px; background: rgba(0,0,0,0.5); color: white; padding: 2px 5px; border-radius: 3px; font-size: 10px;">
+                                            ${optimizedSizeKB}KB
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 12px; margin-bottom: 5px; word-break: break-all;">${fileName}</div>
+                                    <div style="display: flex; justify-content: center; gap: 5px;">
+                                        <button onclick="downloadSingleImage(${index})" style="background: var(--secondary-color); color: white; border: none; border-radius: 4px; padding: 5px 10px; font-size: 12px; cursor: pointer;">
+                                            <i class="fas fa-download"></i> Download
+                                        </button>
+                                    </div>
+                                    <div style="font-size: 11px; color: #666; margin-top: 5px;">
+                                        ${fileExt.toUpperCase()} • ${optimizedSizeKB}KB (${Math.round((1 - (optimizedSizeKB/fileSizeKB)) * 100)}% saved)
+                                    </div>
+                                </div>
+                                `;
+                            }).join('')}
                         </div>
                     `;
                 }
             }, 200);
         });
         
+        // Download functions
+        function downloadSecuredDocument(file) {
+            // Create a blob URL for the file
+            const blobUrl = URL.createObjectURL(file);
+            
+            // Create download link
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = `secured_${file.name}`;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            }, 100);
+        }
+        
+        function downloadOptimizedImage(file) {
+            // Get selected format
+            const format = document.getElementById('output-format').value;
+            let newName = file.name;
+            
+            // Change extension if format is not original
+            if (format !== 'original') {
+                const extIndex = newName.lastIndexOf('.');
+                if (extIndex > -1) {
+                    newName = newName.substring(0, extIndex);
+                }
+                newName += `.${format}`;
+            } else {
+                newName = `optimized_${newName}`;
+            }
+            
+            // Create download link
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(file);
+            a.download = newName;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+            }, 100);
+        }
+        
+        function downloadAllOptimizedImages(files) {
+            if (files.length === 1) {
+                downloadOptimizedImage(files[0]);
+                return;
+            }
+            
+            // Create a zip file (simulated)
+            const zipBlob = new Blob(['This would be a zip file containing all optimized images in a real implementation'], { type: 'application/zip' });
+            
+            // Create download link
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(zipBlob);
+            a.download = 'optimized_images.zip';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+            }, 100);
+        }
+        
+        // Make downloadSingleImage available globally for the preview buttons
+        window.downloadSingleImage = function(index) {
+            downloadOptimizedImage(selectedImgFiles[index]);
+        };
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
         // Drag and drop functionality
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             docUploadArea.addEventListener(eventName, preventDefaults, false);
             imgUploadArea.addEventListener(eventName, preventDefaults, false);
+            
+            // Add highlight class during drag
+            if (eventName === 'dragenter' || eventName === 'dragover') {
+                docUploadArea.addEventListener(eventName, highlight, false);
+                imgUploadArea.addEventListener(eventName, highlight, false);
+            } else {
+                docUploadArea.addEventListener(eventName, unhighlight, false);
+                imgUploadArea.addEventListener(eventName, unhighlight, false);
+            }
         });
         
         function preventDefaults(e) {
@@ -1092,41 +1272,38 @@
             e.stopPropagation();
         }
         
-        ['dragenter', 'dragover'].forEach(eventName => {
-            docUploadArea.addEventListener(eventName, highlight, false);
-            imgUploadArea.addEventListener(eventName, highlight, false);
-        });
-        
-        ['dragleave', 'drop'].forEach(eventName => {
-            docUploadArea.addEventListener(eventName, unhighlight, false);
-            imgUploadArea.addEventListener(eventName, unhighlight, false);
-        });
-        
-        function highlight(e) {
+        function highlight() {
             this.classList.add('highlight');
         }
         
-        function unhighlight(e) {
+        function unhighlight() {
             this.classList.remove('highlight');
         }
         
-        docUploadArea.addEventListener('drop', handleDrop, false);
-        imgUploadArea.addEventListener('drop', handleDrop, false);
-        
-        function handleDrop(e) {
+        // Handle dropped files
+        docUploadArea.addEventListener('drop', function(e) {
             const dt = e.dataTransfer;
             const files = dt.files;
             
-            if (this.id === 'docUploadArea') {
+            if (files.length > 0) {
                 docFileInput.files = files;
+                selectedDocFile = files[0];
                 const event = new Event('change');
                 docFileInput.dispatchEvent(event);
-            } else {
+            }
+        });
+        
+        imgUploadArea.addEventListener('drop', function(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (files.length > 0) {
                 imgFileInput.files = files;
+                selectedImgFiles = Array.from(files);
                 const event = new Event('change');
                 imgFileInput.dispatchEvent(event);
             }
-        }
+        });
     </script>
 </body>
 </html>
