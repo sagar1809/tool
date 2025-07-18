@@ -1139,19 +1139,19 @@
         
         // Convert Button Handlers
         document.getElementById('pdf-to-word-convert').addEventListener('click', function() {
-            handleConversion('pdf-to-word', 'docx');
+            handleConversion('pdf-to-word');
         });
         
         document.getElementById('pdf-to-excel-convert').addEventListener('click', function() {
-            handleConversion('pdf-to-excel', 'xlsx');
+            handleConversion('pdf-to-excel');
         });
         
         document.getElementById('word-to-pdf-convert').addEventListener('click', function() {
-            handleConversion('word-to-pdf', 'pdf');
+            handleConversion('word-to-pdf');
         });
         
         document.getElementById('excel-to-pdf-convert').addEventListener('click', function() {
-            handleConversion('excel-to-pdf', 'pdf');
+            handleConversion('excel-to-pdf');
         });
         
         // Download Button Handlers
@@ -1188,7 +1188,7 @@
             resetConverter('excel-to-pdf');
         });
         
-        function handleConversion(converterId, fileExtension) {
+        function handleConversion(converterId) {
             const button = document.getElementById(`${converterId}-convert`);
             const resultDiv = document.getElementById(`${converterId}-result`);
             const fileInput = document.getElementById(`${converterId}-input`);
@@ -1220,12 +1220,11 @@
         }
         
         function downloadFile(converterId, defaultExtension) {
+            const fileInput = document.getElementById(`${converterId}-input`);
             const formatSelect = document.getElementById(`${converterId}-format`);
             const selectedFormat = formatSelect ? formatSelect.value : defaultExtension;
-            const outputFilename = `converted.${selectedFormat}`;
             
-            // Get the original file name and change extension
-            const fileInput = document.getElementById(`${converterId}-input`);
+            // Get the original file name
             let fileName = "converted";
             if (fileInput.files.length > 0) {
                 fileName = fileInput.files[0].name.split('.')[0];
@@ -1235,23 +1234,16 @@
             let content, mimeType;
             
             if (selectedFormat === 'docx' || selectedFormat === 'doc') {
-                // For demo purposes - in a real app this would be the actual converted file
-                content = "This is a sample Word document content.\n\nIn a real application, this would be your converted file.";
+                content = `This is a sample Word document.\n\nConverted from: ${fileName}`;
                 mimeType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                alert("In a real application, this would download the actual converted Word file");
-                return;
             } 
             else if (selectedFormat === 'xlsx' || selectedFormat === 'xls') {
-                // For demo purposes - in a real app this would be the actual converted file
-                content = "This is a sample Excel document content.\n\nIn a real application, this would be your converted file.";
+                content = `This is a sample Excel document.\n\nConverted from: ${fileName}`;
                 mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                alert("In a real application, this would download the actual converted Excel file");
-                return;
             }
             else if (selectedFormat === 'pdf') {
-                // Create a simple PDF file for demonstration
                 content = `%PDF-1.4
-%âãÏÓ
+%PDF sample file
 1 0 obj
 << /Type /Catalog /Pages 2 0 R >>
 endobj
@@ -1285,12 +1277,11 @@ startxref
 %%EOF`;
                 mimeType = "application/pdf";
             } else {
-                // Default to text file if format not recognized
                 content = `This is a sample converted file.\nOriginal file: ${fileName}\nFormat: ${selectedFormat}`;
                 mimeType = "text/plain";
             }
             
-            // Create download link
+            // Create Blob and download
             const blob = new Blob([content], { type: mimeType });
             const url = URL.createObjectURL(blob);
             
