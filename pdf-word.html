@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to convert PDF to Word, Excel and vice versa. Optimize documents with adjustable compression levels.">
+    <meta name="keywords" content="PDF to Word, PDF to Excel, Word to PDF, Excel to PDF, document converter, file conversion">
+    <meta name="author" content="PDF Converter Pro">
+    <meta name="robots" content="index, follow">
+    <title>PDF Converter Pro | Convert PDF to Word, Excel and Vice Versa</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="PDF Converter Pro">
+    <meta property="og:description" content="Free online tool to convert PDF to Word, Excel and vice versa">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .converter-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin: -50px auto 40px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+        
+        .converter-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .converter-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-color);
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .converter-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .converter-tab:hover:not(.active) {
+            color: var(--dark-color);
+        }
+        
+        .converter-content {
+            display: none;
+        }
+        
+        .converter-content.active {
+            display: block;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .file-upload i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .file-upload p {
+            margin-bottom: 10px;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success:hover {
+            background-color: #2d9246;
+        }
+        
+        .settings-panel {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+        }
+        
+        .settings-title {
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .settings-title i {
+            transition: var(--transition);
+        }
+        
+        .settings-content {
+            display: none;
+            padding-top: 15px;
+        }
+        
+        .settings-panel.active .settings-content {
+            display: block;
+        }
+        
+        .settings-panel.active .settings-title i {
+            transform: rotate(180deg);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+        }
+        
+        .select-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+            font-family: inherit;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        
+        .range-slider {
+            width: 100%;
+        }
+        
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .conversion-result {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f7f0;
+            border-radius: var(--border-radius);
+            border: 1px solid #d4edda;
+        }
+
+        .conversion-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .download-btn-container {
+            margin-top: 15px;
+        }
+        
+        .ad-container {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #bdc1c6;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 10px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--box-shadow);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+        
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .converter-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .converter-tab {
+                flex: 1 0 50%;
+                text-align: center;
+                padding: 10px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .converter-tab {
+                flex: 1 0 100%;
+            }
+            
+            .file-upload {
+                padding: 30px 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="PDF Converter Pro Logo">
+                <h1>PDF Converter Pro</h1>
+            </a>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Convert PDF to Word, Excel and Vice Versa</h2>
+            <p>Free online tool to convert your documents with high accuracy. No installation required.</p>
+        </div>
+    </section>
+    
+    <!-- Ad Container (Top) -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- Ad Unit 1 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <!-- Converter Tool -->
+    <div class="container">
+        <div class="converter-container">
+            <div class="converter-tabs">
+                <div class="converter-tab active" data-tab="pdf-to-word">PDF to Word</div>
+                <div class="converter-tab" data-tab="pdf-to-excel">PDF to Excel</div>
+                <div class="converter-tab" data-tab="word-to-pdf">Word to PDF</div>
+                <div class="converter-tab" data-tab="excel-to-pdf">Excel to PDF</div>
+            </div>
+            
+            <!-- PDF to Word Converter -->
+            <div class="converter-content active" id="pdf-to-word">
+                <div class="file-upload" id="pdf-to-word-upload">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>Drag & drop your PDF file here or click to browse</p>
+                    <p class="small">Max file size: 25MB</p>
+                    <input type="file" id="pdf-to-word-input" accept=".pdf">
+                    <button class="btn">Select File</button>
+                </div>
+                
+                <div class="settings-panel" id="pdf-to-word-settings">
+                    <div class="settings-title">
+                        <span>Conversion Settings</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="settings-content">
+                        <div class="form-group">
+                            <label for="pdf-to-word-format">Output Format</label>
+                            <select id="pdf-to-word-format" class="select-control">
+                                <option value="docx">DOCX (Microsoft Word)</option>
+                                <option value="doc">DOC (Word 97-2003)</option>
+                                <option value="odt">ODT (OpenDocument)</option>
+                                <option value="rtf">RTF (Rich Text Format)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pdf-to-word-compression">Image Compression</label>
+                            <input type="range" id="pdf-to-word-compression" class="range-slider" min="0" max="100" value="50">
+                            <div class="range-labels">
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pdf-to-word-quality">Output Quality</label>
+                            <select id="pdf-to-word-quality" class="select-control">
+                                <option value="high">High (Best quality)</option>
+                                <option value="medium" selected>Medium (Balanced)</option>
+                                <option value="low">Low (Smaller file)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="pdf-to-word-ocr" checked>
+                            <label for="pdf-to-word-ocr">Enable OCR for scanned documents</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn" id="pdf-to-word-convert">Convert to Word</button>
+                    <button class="btn btn-secondary" id="pdf-to-word-reset">Reset</button>
+                </div>
+
+                <div class="conversion-result" id="pdf-to-word-result">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your document has been successfully converted.</p>
+                    <div class="download-btn-container">
+                        <button class="btn btn-success" id="pdf-to-word-download">
+                            <i class="fas fa-download"></i> Download Word File
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PDF to Excel Converter -->
+            <div class="converter-content" id="pdf-to-excel">
+                <div class="file-upload" id="pdf-to-excel-upload">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>Drag & drop your PDF file here or click to browse</p>
+                    <p class="small">Max file size: 25MB</p>
+                    <input type="file" id="pdf-to-excel-input" accept=".pdf">
+                    <button class="btn">Select File</button>
+                </div>
+                
+                <div class="settings-panel" id="pdf-to-excel-settings">
+                    <div class="settings-title">
+                        <span>Conversion Settings</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="settings-content">
+                        <div class="form-group">
+                            <label for="pdf-to-excel-format">Output Format</label>
+                            <select id="pdf-to-excel-format" class="select-control">
+                                <option value="xlsx">XLSX (Microsoft Excel)</option>
+                                <option value="xls">XLS (Excel 97-2003)</option>
+                                <option value="ods">ODS (OpenDocument)</option>
+                                <option value="csv">CSV (Comma Separated)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pdf-to-excel-compression">Image Compression</label>
+                            <input type="range" id="pdf-to-excel-compression" class="range-slider" min="0" max="100" value="50">
+                            <div class="range-labels">
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="pdf-to-excel-tables" checked>
+                            <label for="pdf-to-excel-tables">Detect tables automatically</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="pdf-to-excel-ocr" checked>
+                            <label for="pdf-to-excel-ocr">Enable OCR for scanned documents</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn" id="pdf-to-excel-convert">Convert to Excel</button>
+                    <button class="btn btn-secondary" id="pdf-to-excel-reset">Reset</button>
+                </div>
+
+                <div class="conversion-result" id="pdf-to-excel-result">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your document has been successfully converted.</p>
+                    <div class="download-btn-container">
+                        <button class="btn btn-success" id="pdf-to-excel-download">
+                            <i class="fas fa-download"></i> Download Excel File
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Word to PDF Converter -->
+            <div class="converter-content" id="word-to-pdf">
+                <div class="file-upload" id="word-to-pdf-upload">
+                    <i class="fas fa-file-word"></i>
+                    <p>Drag & drop your Word file here or click to browse</p>
+                    <p class="small">Max file size: 25MB</p>
+                    <input type="file" id="word-to-pdf-input" accept=".doc,.docx,.odt,.rtf">
+                    <button class="btn">Select File</button>
+                </div>
+                
+                <div class="settings-panel" id="word-to-pdf-settings">
+                    <div class="settings-title">
+                        <span>Conversion Settings</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="settings-content">
+                        <div class="form-group">
+                            <label for="word-to-pdf-quality">PDF Quality</label>
+                            <select id="word-to-pdf-quality" class="select-control">
+                                <option value="high">High (Best quality)</option>
+                                <option value="medium" selected>Medium (Balanced)</option>
+                                <option value="low">Low (Smaller file)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="word-to-pdf-compression">Image Compression</label>
+                            <input type="range" id="word-to-pdf-compression" class="range-slider" min="0" max="100" value="50">
+                            <div class="range-labels">
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="word-to-pdf-security">Security Options</label>
+                            <select id="word-to-pdf-security" class="select-control">
+                                <option value="none" selected>No protection</option>
+                                <option value="password">Password protection</option>
+                                <option value="readonly">Read-only</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="word-to-pdf-password-group" style="display: none;">
+                            <label for="word-to-pdf-password">Password</label>
+                            <input type="password" id="word-to-pdf-password" class="form-control" placeholder="Enter password">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn" id="word-to-pdf-convert">Convert to PDF</button>
+                    <button class="btn btn-secondary" id="word-to-pdf-reset">Reset</button>
+                </div>
+
+                <div class="conversion-result" id="word-to-pdf-result">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your document has been successfully converted.</p>
+                    <div class="download-btn-container">
+                        <button class="btn btn-success" id="word-to-pdf-download">
+                            <i class="fas fa-download"></i> Download PDF File
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Excel to PDF Converter -->
+            <div class="converter-content" id="excel-to-pdf">
+                <div class="file-upload" id="excel-to-pdf-upload">
+                    <i class="fas fa-file-excel"></i>
+                    <p>Drag & drop your Excel file here or click to browse</p>
+                    <p class="small">Max file size: 25MB</p>
+                    <input type="file" id="excel-to-pdf-input" accept=".xls,.xlsx,.ods,.csv">
+                    <button class="btn">Select File</button>
+                </div>
+                
+                <div class="settings-panel" id="excel-to-pdf-settings">
+                    <div class="settings-title">
+                        <span>Conversion Settings</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="settings-content">
+                        <div class="form-group">
+                            <label for="excel-to-pdf-quality">PDF Quality</label>
+                            <select id="excel-to-pdf-quality" class="select-control">
+                                <option value="high">High (Best quality)</option>
+                                <option value="medium" selected>Medium (Balanced)</option>
+                                <option value="low">Low (Smaller file)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="excel-to-pdf-compression">Image Compression</label>
+                            <input type="range" id="excel-to-pdf-compression" class="range-slider" min="0" max="100" value="50">
+                            <div class="range-labels">
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="excel-to-pdf-orientation">Page Orientation</label>
+                            <select id="excel-to-pdf-orientation" class="select-control">
+                                <option value="auto">Auto</option>
+                                <option value="portrait">Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="excel-to-pdf-security">Security Options</label>
+                            <select id="excel-to-pdf-security" class="select-control">
+                                <option value="none" selected>No protection</option>
+                                <option value="password">Password protection</option>
+                                <option value="readonly">Read-only</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="excel-to-pdf-password-group" style="display: none;">
+                            <label for="excel-to-pdf-password">Password</label>
+                            <input type="password" id="excel-to-pdf-password" class="form-control" placeholder="Enter password">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn" id="excel-to-pdf-convert">Convert to PDF</button>
+                    <button class="btn btn-secondary" id="excel-to-pdf-reset">Reset</button>
+                </div>
+
+                <div class="conversion-result" id="excel-to-pdf-result">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your document has been successfully converted.</p>
+                    <div class="download-btn-container">
+                        <button class="btn btn-success" id="excel-to-pdf-download">
+                            <i class="fas fa-download"></i> Download PDF File
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ad Container (Middle) -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- Ad Unit 2 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID_2"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features</h2>
+                <p>Our PDF converter offers everything you need to work with documents efficiently</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <i class="fas fa-file-export"></i>
+                    <h3>Multiple Formats</h3>
+                    <p>Convert between PDF, Word, Excel and other popular document formats with ease.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Processing</h3>
+                    <p>Your files are processed securely and deleted automatically after conversion.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Fast Conversion</h3>
+                    <p>Quick conversion powered by cloud technology with no quality loss.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices including smartphones and tablets.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-adjust"></i>
+                    <h3>OCR Technology</h3>
+                    <p>Convert scanned documents and images to editable text with our OCR engine.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Integration</h3>
+                    <p>Import files directly from Google Drive, Dropbox and other cloud services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Container (Bottom) -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- Ad Unit 3 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID_3"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PDF Converter Pro</h3>
+                    <p>The ultimate online tool for converting documents between PDF, Word, Excel and other formats with high accuracy and security.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Supported Formats</h3>
+                    <ul>
+                        <li><a href="#">PDF to Word</a></li>
+                        <li><a href="#">PDF to Excel</a></li>
+                        <li><a href="#">Word to PDF</a></li>
+                        <li><a href="#">Excel to PDF</a></li>
+                        <li><a href="#">More Formats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@pdfconverterpro.com</li>
+                        <li><i class="fas fa-globe"></i> www.pdfconverterpro.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PDF Converter Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Tab Switching
+        const tabs = document.querySelectorAll('.converter-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.converter-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Settings Panel Toggle
+        const settingsPanels = document.querySelectorAll('.settings-panel');
+        settingsPanels.forEach(panel => {
+            const title = panel.querySelector('.settings-title');
+            title.addEventListener('click', () => {
+                panel.classList.toggle('active');
+            });
+        });
+        
+        // Show/hide password field based on security selection
+        document.getElementById('word-to-pdf-security').addEventListener('change', function() {
+            const passwordGroup = document.getElementById('word-to-pdf-password-group');
+            passwordGroup.style.display = this.value === 'password' ? 'block' : 'none';
+        });
+        
+        document.getElementById('excel-to-pdf-security').addEventListener('change', function() {
+            const passwordGroup = document.getElementById('excel-to-pdf-password-group');
+            passwordGroup.style.display = this.value === 'password' ? 'block' : 'none';
+        });
+        
+        // File Upload Handling
+        const fileUploads = document.querySelectorAll('.file-upload');
+        fileUploads.forEach(upload => {
+            const input = upload.querySelector('input[type="file"]');
+            const button = upload.querySelector('.btn');
+            
+            // Trigger file input when clicking the upload area or button
+            upload.addEventListener('click', () => input.click());
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                input.click();
+            });
+            
+            // Handle file selection
+            input.addEventListener('change', () => {
+                if (input.files.length > 0) {
+                    const fileName = input.files[0].name;
+                    upload.querySelector('p').textContent = fileName;
+                    upload.querySelector('.small').textContent = `${(input.files[0].size / (1024 * 1024)).toFixed(2)}MB`;
+                }
+            });
+            
+            // Drag and drop functionality
+            upload.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                upload.style.borderColor = 'var(--primary-color)';
+                upload.style.backgroundColor = 'rgba(66, 133, 244, 0.1)';
+            });
+            
+            upload.addEventListener('dragleave', () => {
+                upload.style.borderColor = '#ddd';
+                upload.style.backgroundColor = 'transparent';
+            });
+            
+            upload.addEventListener('drop', (e) => {
+                e.preventDefault();
+                upload.style.borderColor = '#ddd';
+                upload.style.backgroundColor = 'transparent';
+                
+                if (e.dataTransfer.files.length > 0) {
+                    input.files = e.dataTransfer.files;
+                    const fileName = input.files[0].name;
+                    upload.querySelector('p').textContent = fileName;
+                    upload.querySelector('.small').textContent = `${(input.files[0].size / (1024 * 1024)).toFixed(2)}MB`;
+                }
+            });
+        });
+        
+        // Convert Button Handlers
+        document.getElementById('pdf-to-word-convert').addEventListener('click', function() {
+            handleConversion('pdf-to-word', 'docx');
+        });
+        
+        document.getElementById('pdf-to-excel-convert').addEventListener('click', function() {
+            handleConversion('pdf-to-excel', 'xlsx');
+        });
+        
+        document.getElementById('word-to-pdf-convert').addEventListener('click', function() {
+            handleConversion('word-to-pdf', 'pdf');
+        });
+        
+        document.getElementById('excel-to-pdf-convert').addEventListener('click', function() {
+            handleConversion('excel-to-pdf', 'pdf');
+        });
+        
+        // Download Button Handlers
+        document.getElementById('pdf-to-word-download').addEventListener('click', function() {
+            downloadFile('pdf-to-word', 'docx');
+        });
+        
+        document.getElementById('pdf-to-excel-download').addEventListener('click', function() {
+            downloadFile('pdf-to-excel', 'xlsx');
+        });
+        
+        document.getElementById('word-to-pdf-download').addEventListener('click', function() {
+            downloadFile('word-to-pdf', 'pdf');
+        });
+        
+        document.getElementById('excel-to-pdf-download').addEventListener('click', function() {
+            downloadFile('excel-to-pdf', 'pdf');
+        });
+        
+        // Reset Button Handlers
+        document.getElementById('pdf-to-word-reset').addEventListener('click', function() {
+            resetConverter('pdf-to-word');
+        });
+        
+        document.getElementById('pdf-to-excel-reset').addEventListener('click', function() {
+            resetConverter('pdf-to-excel');
+        });
+        
+        document.getElementById('word-to-pdf-reset').addEventListener('click', function() {
+            resetConverter('word-to-pdf');
+        });
+        
+        document.getElementById('excel-to-pdf-reset').addEventListener('click', function() {
+            resetConverter('excel-to-pdf');
+        });
+        
+        function handleConversion(converterId, fileExtension) {
+            const button = document.getElementById(`${converterId}-convert`);
+            const resultDiv = document.getElementById(`${converterId}-result`);
+            const fileInput = document.getElementById(`${converterId}-input`);
+            
+            // Check if file is selected
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Please select a file first!');
+                return;
+            }
+            
+            // Disable button and show loading state
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // Hide any previous result
+            resultDiv.classList.remove('show');
+            
+            // Simulate conversion delay
+            setTimeout(() => {
+                // Show success message
+                button.innerHTML = converterId.includes('pdf-to-') ? 
+                    `Convert to ${converterId.split('-')[2].charAt(0).toUpperCase() + converterId.split('-')[2].slice(1)}` : 
+                    'Convert to PDF';
+                button.disabled = false;
+                
+                // Show result div
+                resultDiv.classList.add('show');
+            }, 2000);
+        }
+        
+        function downloadFile(converterId, defaultExtension) {
+            const formatSelect = document.getElementById(`${converterId}-format`);
+            const selectedFormat = formatSelect ? formatSelect.value : defaultExtension;
+            const outputFilename = `converted.${selectedFormat}`;
+            
+            // Get the original file name and change extension
+            const fileInput = document.getElementById(`${converterId}-input`);
+            let fileName = "converted";
+            if (fileInput.files.length > 0) {
+                fileName = fileInput.files[0].name.split('.')[0];
+            }
+            
+            // Create sample content based on file type
+            let content, mimeType;
+            
+            if (selectedFormat === 'docx' || selectedFormat === 'doc') {
+                // For demo purposes - in a real app this would be the actual converted file
+                content = "This is a sample Word document content.\n\nIn a real application, this would be your converted file.";
+                mimeType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                alert("In a real application, this would download the actual converted Word file");
+                return;
+            } 
+            else if (selectedFormat === 'xlsx' || selectedFormat === 'xls') {
+                // For demo purposes - in a real app this would be the actual converted file
+                content = "This is a sample Excel document content.\n\nIn a real application, this would be your converted file.";
+                mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                alert("In a real application, this would download the actual converted Excel file");
+                return;
+            }
+            else if (selectedFormat === 'pdf') {
+                // Create a simple PDF file for demonstration
+                content = `%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /Resources << >> /MediaBox [0 0 612 792] /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 51 >>
+stream
+BT
+/F1 12 Tf
+100 700 Td
+(${fileName} - Converted Document) Tj
+ET
+endstream
+endobj
+xref
+0 5
+0000000000 65535 f
+0000000010 00000 n
+0000000060 00000 n
+0000000114 00000 n
+0000000203 00000 n
+trailer
+<< /Size 5 /Root 1 0 R >>
+startxref
+269
+%%EOF`;
+                mimeType = "application/pdf";
+            } else {
+                // Default to text file if format not recognized
+                content = `This is a sample converted file.\nOriginal file: ${fileName}\nFormat: ${selectedFormat}`;
+                mimeType = "text/plain";
+            }
+            
+            // Create download link
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${fileName}.${selectedFormat}`;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+        
+        function resetConverter(converterId) {
+            const converter = document.getElementById(converterId);
+            
+            // Reset file input
+            const fileInput = converter.querySelector('input[type="file"]');
+            fileInput.value = '';
+            
+            // Reset upload display
+            const upload = converter.querySelector('.file-upload');
+            upload.querySelector('p').textContent = 'Drag & drop your file here or click to browse';
+            upload.querySelector('.small').textContent = 'Max file size: 25MB';
+            
+            // Reset settings to defaults
+            const selects = converter.querySelectorAll('select');
+            selects.forEach(select => {
+                if (select.id.includes('format')) {
+                    select.value = select.querySelector('option').value;
+                } else if (select.id.includes('quality')) {
+                    select.value = 'medium';
+                } else if (select.id.includes('security')) {
+                    select.value = 'none';
+                    const passwordGroup = document.getElementById(select.id.replace('security', 'password-group'));
+                    if (passwordGroup) passwordGroup.style.display = 'none';
+                }
+            });
+            
+            const sliders = converter.querySelectorAll('input[type="range"]');
+            sliders.forEach(slider => {
+                slider.value = 50;
+            });
+            
+            const checkboxes = converter.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            
+            // Hide result div
+            const resultDiv = document.getElementById(`${converterId}-result`);
+            resultDiv.classList.remove('show');
+            
+            // Reset convert button
+            const convertBtn = document.getElementById(`${converterId}-convert`);
+            convertBtn.innerHTML = converterId.includes('pdf-to-') ? 
+                `Convert to ${converterId.split('-')[2].charAt(0).toUpperCase() + converterId.split('-')[2].slice(1)}` : 
+                'Convert to PDF';
+        }
+        
+        // Animate features on scroll
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        function checkScroll() {
+            featureCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.classList.add('fade-in');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
+</body>
+</html>
